@@ -1,0 +1,22 @@
+[
+  {"label": "Drought claim on a healthy-looking paddy photo",
+   "image_id": "01098ba2-7e27-4c75-8f93-39c2c9c9f51b642626_293_58_",
+   "claim": {"survey_no": "293", "village_lgd": "642626", "claimed_cause": "drought", "incident_date": "2024-11-04",
+             "claimed_crop": "Rice (Paddy)", "claimed_stage": "full_growth",
+             "description": "DEMO INPUT (synthetic claim for testing; the photo and reference data are real). Paddy dried up."}},
+  {"label": "Pest claim (weather cannot verify; needs field inspection)",
+   "image_id": "01198bd8-1ddd-48b0-8dd0-a238df563ecd933536_696_58_",
+   "claim": {"survey_no": "696", "village_lgd": "933536", "claimed_cause": "pest", "incident_date": "2024-11-08",
+             "claimed_crop": "Rice (Paddy)", "claimed_stage": "vegetation",
+             "description": "DEMO INPUT (synthetic claim for testing; the photo and reference data are real). Leaf damage from insects."}},
+  {"label": "Crop mismatch: reference says rice, photo shows a coconut palm and tilled soil",
+   "image_id": "00b38c78-9ef3-4568-b254-eb895b6b629f933533_266_58_",
+   "claim": {"survey_no": "266", "village_lgd": "933533", "claimed_cause": "drought", "incident_date": "2024-11-08",
+             "claimed_crop": "Rice (Paddy)",
+             "description": "DEMO INPUT (synthetic claim for testing; the photo and reference data are real). Rice crop lost to drought."}},
+  {"label": "Timing conflict: photo is dated before the reported incident",
+   "image_id": "2fec8fab4a7055ce-43514-14060200521558",
+   "claim": {"survey_no": "371", "village_lgd": "642627", "subdivision": "3B", "claimed_cause": "flood", "incident_date": "2024-11-14",
+             "claimed_crop": "Rice (Paddy)",
+             "description": "DEMO INPUT (synthetic claim for testing; the photo and reference data are real). Field flooded."}}
+]

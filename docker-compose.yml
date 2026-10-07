@@ -1,0 +1,29 @@
+# Local/hackathon-demo compose. AWS credentials are passed through from your shell environment
+# (after `aws sso login` / pasting temporary keys) -- never hardcode them here.
+services:
+  backend:
+    build: .
+    ports: ["8000:8000"]
+    environment:
+      - AWS_REGION=ap-south-1
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
+      - AWS_SESSION_TOKEN
+      - BEDROCK_VISION_MODEL_ID=${BEDROCK_VISION_MODEL_ID:-amazon.nova-lite-v1:0}
+      - BEDROCK_TEXT_MODEL_ID=${BEDROCK_TEXT_MODEL_ID:-amazon.nova-micro-v1:0}
+      - RT_CORS_ORIGINS=http://localhost:5173,http://localhost:8080
+    volumes:
+      - ./data:/data          # CSV, images, geo layers (read/write for the DB and uploads)
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/health')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        VITE_API_BASE: http://localhost:8000/api
+    ports: ["8080:80"]
+    depends_on: [backend]
